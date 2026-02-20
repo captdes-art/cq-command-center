@@ -12,23 +12,23 @@ export default function Home() {
       <Header />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
+        {/* Apps & Tools Grid — most important, always on top */}
+        <AppGrid />
+
+        {/* Quick Links */}
+        <QuickLinks />
+
         {/* Weather + Marine: Side-by-side on desktop, stacked on mobile */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <WeatherWidget />
           <MarineWidget />
         </div>
 
-        {/* Apps & Tools Grid */}
-        <AppGrid />
-
-        {/* NYS Fishing Regulations */}
+        {/* NYS Fishing Regulations — collapsible */}
         <RegulationsCard />
 
         {/* Local Resources Directory */}
         <LocalResources />
-
-        {/* Quick Links */}
-        <QuickLinks />
       </main>
 
       {/* Footer */}
