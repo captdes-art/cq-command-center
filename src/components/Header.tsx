@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Anchor, Radio } from "lucide-react";
+import { Anchor } from "lucide-react";
 
 export default function Header() {
   const [time, setTime] = useState<string>("");
@@ -36,42 +36,30 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="border-b border-navy-700 bg-navy-950/80 backdrop-blur-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-        {/* Left: Branding */}
-        <div className="flex items-center gap-3">
-          <div className="bg-teal-600 text-white font-bold text-xl w-10 h-10 rounded-lg flex items-center justify-center font-[family-name:var(--font-space-grotesk)]">
-            CQ
+    <header
+      className="bg-gradient-to-br from-blue-800 to-blue-500 text-white"
+      style={{ padding: "52px 0 100px" }}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+        {/* Left: Logo + Title */}
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 bg-white/15 backdrop-blur-sm rounded-[14px] flex items-center justify-center">
+            <Anchor className="w-7 h-7 text-white" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-slate-200 font-[family-name:var(--font-space-grotesk)] leading-tight">
-              Command Center
+            <h1 className="text-2xl font-extrabold tracking-tight leading-tight">
+              CQ Command Center
             </h1>
-            <p className="text-xs text-slate-400 hidden sm:block">
-              Celtic Quest Fishing
+            <p className="text-sm text-white/80 mt-0.5">
+              Celtic Quest Fishing &middot; Port Jefferson, NY
             </p>
           </div>
         </div>
 
-        {/* Center: Status */}
-        <div className="hidden md:flex items-center gap-4">
-          <div className="flex items-center gap-1.5 text-teal-400 text-sm">
-            <Radio className="w-3.5 h-3.5 animate-pulse" />
-            <span>Live</span>
-          </div>
-          <div className="flex items-center gap-1.5 text-slate-400 text-sm">
-            <Anchor className="w-3.5 h-3.5" />
-            <span>Port Jefferson, NY</span>
-          </div>
-        </div>
-
-        {/* Right: Clock & Greeting */}
-        <div className="text-right">
-          <p className="text-sm font-medium text-slate-200 font-[family-name:var(--font-space-grotesk)]">
-            Captain&apos;s Bridge
-          </p>
-          <p className="text-xs text-teal-400 tabular-nums">{time}</p>
-          <p className="text-xs text-slate-400 hidden sm:block">{date}</p>
+        {/* Right: Clock */}
+        <div className="text-right hidden sm:block">
+          <p className="text-lg font-semibold tabular-nums">{time}</p>
+          <p className="text-sm text-white/70">{date}</p>
         </div>
       </div>
     </header>

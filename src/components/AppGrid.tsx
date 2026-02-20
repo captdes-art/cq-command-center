@@ -9,7 +9,6 @@ import {
   HardDrive,
   MessageSquare,
   CreditCard,
-  ExternalLink,
 } from "lucide-react";
 import appsData from "@/data/apps.json";
 
@@ -32,11 +31,11 @@ const iconMap: Record<
 export default function AppGrid() {
   return (
     <div className="animate-fade-in-up" style={{ animationDelay: "0.1s" }}>
-      <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+      <h2 className="text-[15px] font-bold text-gray-900 mb-4">
         Apps & Tools
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5">
         {appsData.apps.map((app) => {
           const Icon = iconMap[app.icon] || Globe;
           return (
@@ -45,24 +44,21 @@ export default function AppGrid() {
               href={app.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-card rounded-xl border border-border p-4 hover:bg-card-hover hover:border-teal-600/50 transition-all duration-200 hover:scale-[1.02]"
+              className="group bg-white rounded-[14px] shadow-[0_4px_20px_rgba(0,0,0,0.06)] p-5 hover:bg-blue-50 hover:shadow-[0_8px_28px_rgba(0,0,0,0.09)] transition-all duration-200 hover:-translate-y-[3px] cursor-pointer block"
             >
-              <div className="flex items-start justify-between mb-3">
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center"
-                  style={{ backgroundColor: `${app.accentColor}20` }}
-                >
-                  <Icon
-                    className="w-5 h-5"
-                    style={{ color: app.accentColor }}
-                  />
-                </div>
-                <ExternalLink className="w-3.5 h-3.5 text-slate-600 group-hover:text-slate-400 transition-colors" />
+              <div
+                className="w-[46px] h-[46px] rounded-xl flex items-center justify-center mb-3.5"
+                style={{ backgroundColor: `${app.accentColor}1F` }}
+              >
+                <Icon
+                  className="w-[22px] h-[22px]"
+                  style={{ color: app.accentColor }}
+                />
               </div>
-              <h3 className="text-sm font-semibold text-slate-200 mb-0.5">
+              <h3 className="text-sm font-semibold text-gray-900 mb-0.5">
                 {app.name}
               </h3>
-              <p className="text-xs text-slate-500">{app.description}</p>
+              <p className="text-xs text-gray-400">{app.description}</p>
             </a>
           );
         })}

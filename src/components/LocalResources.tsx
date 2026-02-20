@@ -29,7 +29,7 @@ export default function LocalResources() {
 
   return (
     <div className="animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-      <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-4">
+      <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
         Local Resources Directory
       </h2>
 
@@ -41,43 +41,43 @@ export default function LocalResources() {
           return (
             <div
               key={category.name}
-              className="bg-card rounded-xl border border-border overflow-hidden"
+              className="bg-white rounded-[14px] shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden"
             >
               <button
                 onClick={() =>
                   setOpenCategory(isOpen ? null : category.name)
                 }
-                className="w-full flex items-center justify-between p-4 hover:bg-card-hover transition-colors text-left"
+                className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors text-left cursor-pointer"
               >
                 <div className="flex items-center gap-3">
-                  <Icon className="w-5 h-5 text-teal-400" />
-                  <span className="text-sm font-semibold text-slate-200">
+                  <Icon className="w-5 h-5 text-blue-500" />
+                  <span className="text-sm font-semibold text-gray-900">
                     {category.name}
                   </span>
-                  <span className="text-xs text-slate-500 bg-navy-700 px-2 py-0.5 rounded-full">
+                  <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
                     {category.businesses.length}
                   </span>
                 </div>
                 <ChevronDown
-                  className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${
+                  className={`w-4 h-4 text-gray-400 transition-transform duration-200 ${
                     isOpen ? "rotate-180" : ""
                   }`}
                 />
               </button>
 
               {isOpen && (
-                <div className="border-t border-navy-700 px-4 pb-4">
+                <div className="border-t border-gray-100 px-4 pb-4">
                   <div className="space-y-3 pt-3">
                     {category.businesses.map((biz) => (
                       <div
                         key={biz.name}
-                        className="flex items-start justify-between p-3 rounded-lg bg-navy-800/50"
+                        className="flex items-start justify-between p-3 rounded-lg bg-gray-50"
                       >
                         <div>
-                          <h4 className="text-sm font-medium text-slate-200">
+                          <h4 className="text-sm font-medium text-gray-900">
                             {biz.name}
                           </h4>
-                          <p className="text-xs text-slate-500 mt-0.5">
+                          <p className="text-xs text-gray-500 mt-0.5">
                             {biz.description}
                           </p>
                         </div>
@@ -85,7 +85,7 @@ export default function LocalResources() {
                           {biz.phone && (
                             <a
                               href={`tel:${biz.phone.replace(/\D/g, "")}`}
-                              className="text-teal-400 hover:text-teal-300 transition-colors p-1.5 rounded-md hover:bg-navy-700"
+                              className="text-blue-500 hover:text-blue-700 transition-colors p-1.5 rounded-md hover:bg-blue-50"
                               title={biz.phone}
                             >
                               <Phone className="w-4 h-4" />
@@ -96,7 +96,7 @@ export default function LocalResources() {
                               href={biz.website}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-teal-400 hover:text-teal-300 transition-colors p-1.5 rounded-md hover:bg-navy-700"
+                              className="text-blue-500 hover:text-blue-700 transition-colors p-1.5 rounded-md hover:bg-blue-50"
                               title="Website"
                             >
                               <Globe className="w-4 h-4" />

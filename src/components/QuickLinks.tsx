@@ -3,7 +3,6 @@ import {
   ShieldCheck,
   Ship,
   Thermometer,
-  ExternalLink,
 } from "lucide-react";
 
 const links = [
@@ -31,12 +30,12 @@ const links = [
 
 export default function QuickLinks() {
   return (
-    <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-      <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">
+    <div className="animate-fade-in-up" style={{ animationDelay: "0.15s" }}>
+      <h2 className="text-[15px] font-bold text-gray-900 mb-4">
         Quick Links
       </h2>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         {links.map((link) => {
           const Icon = link.icon;
           return (
@@ -45,11 +44,10 @@ export default function QuickLinks() {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-card border border-border rounded-lg px-4 py-2.5 text-sm text-slate-300 hover:text-teal-400 hover:border-teal-600/50 transition-all duration-200 group"
+              className="inline-flex items-center gap-2 bg-white rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.05)] px-5 py-2.5 text-[13px] font-medium text-gray-500 hover:bg-blue-50 hover:text-blue-800 hover:shadow-[0_4px_14px_rgba(30,64,175,0.1)] transition-all duration-200 cursor-pointer"
             >
-              <Icon className="w-4 h-4 text-slate-500 group-hover:text-teal-400 transition-colors" />
+              <Icon className="w-4 h-4 text-gray-400" />
               {link.name}
-              <ExternalLink className="w-3 h-3 text-slate-600 group-hover:text-teal-500 transition-colors" />
             </a>
           );
         })}

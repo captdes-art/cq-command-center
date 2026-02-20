@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { dmSans, spaceGrotesk } from "./fonts";
+import { inter } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,10 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${dmSans.variable} ${spaceGrotesk.variable} antialiased`}
-      >
+    <html lang="en">
+      <body className={`${inter.variable} antialiased`}>
         {children}
       </body>
     </html>
