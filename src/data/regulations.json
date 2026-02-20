@@ -1,0 +1,55 @@
+{
+  "lastUpdated": "2025-01-01",
+  "source": "NYS DEC",
+  "sourceUrl": "https://www.dec.ny.gov/outdoor/7894.html",
+  "species": [
+    {
+      "name": "Striped Bass",
+      "icon": "fish",
+      "slotSize": "28\" to 31\" (slot limit)",
+      "season": "April 15 - December 15",
+      "bagLimit": "1 per angler per day",
+      "notes": "Must be in the slot. Trophy season may vary — check DEC updates."
+    },
+    {
+      "name": "Fluke (Summer Flounder)",
+      "icon": "fish",
+      "slotSize": "19\" minimum",
+      "season": "May 1 - September 30",
+      "bagLimit": "4 per angler per day",
+      "notes": "Size and bag limits may change annually. Verify before season opens."
+    },
+    {
+      "name": "Black Sea Bass",
+      "icon": "fish",
+      "slotSize": "16\" minimum",
+      "season": "June 23 - August 31, October 8 - December 31",
+      "bagLimit": "3 per angler (Season 1), 5 per angler (Season 2)",
+      "notes": "Split season. Bag limits differ by season segment."
+    },
+    {
+      "name": "Scup (Porgy)",
+      "icon": "fish",
+      "slotSize": "10\" minimum",
+      "season": "January 1 - December 31 (bonus seasons vary)",
+      "bagLimit": "30 per angler per day (may vary by season)",
+      "notes": "Year-round in most periods. Check for bonus season dates."
+    },
+    {
+      "name": "Bluefish",
+      "icon": "fish",
+      "slotSize": "No minimum size",
+      "season": "January 1 - December 31",
+      "bagLimit": "3 per angler per day (for-hire), 5 recreational",
+      "notes": "For-hire (charter) bag limit differs from recreational."
+    },
+    {
+      "name": "Blackfish (Tautog)",
+      "icon": "fish",
+      "slotSize": "16\" minimum",
+      "season": "April 1 - April 30, October 11 - December 22",
+      "bagLimit": "2 per angler (spring), 3 per angler (fall)",
+      "notes": "Split season with different bag limits. Fall season is prime."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "apps": [
+    {
+      "name": "Reservation System",
+      "url": "https://celticquestfishing.com/reservations",
+      "icon": "CalendarCheck",
+      "description": "Manage bookings & schedule",
+      "accentColor": "#0d9488"
+    },
+    {
+      "name": "Invoice App",
+      "url": "https://invoices.celticquest.com",
+      "icon": "FileText",
+      "description": "Create & send invoices",
+      "accentColor": "#06b6d4"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/celticquestfishing",
+      "icon": "Facebook",
+      "description": "Social media & community",
+      "accentColor": "#1877f2"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/celticquestfishing",
+      "icon": "Instagram",
+      "description": "Photos & reels",
+      "accentColor": "#e4405f"
+    },
+    {
+      "name": "RingCentral",
+      "url": "https://app.ringcentral.com",
+      "icon": "Phone",
+      "description": "Calls & messages",
+      "accentColor": "#f97316"
+    },
+    {
+      "name": "CQ Social Buddy",
+      "url": "https://social.celticquest.com",
+      "icon": "Bot",
+      "description": "AI social media assistant",
+      "accentColor": "#8b5cf6"
+    },
+    {
+      "name": "Gmail",
+      "url": "https://mail.google.com",
+      "icon": "Mail",
+      "description": "Office email",
+      "accentColor": "#ea4335"
+    },
+    {
+      "name": "Google Drive",
+      "url": "https://drive.google.com",
+      "icon": "HardDrive",
+      "description": "Files & documents",
+      "accentColor": "#34a853"
+    },
+    {
+      "name": "WhatsApp",
+      "url": "https://web.whatsapp.com",
+      "icon": "MessageSquare",
+      "description": "Quick messaging",
+      "accentColor": "#25d366"
+    },
+    {
+      "name": "Stripe Dashboard",
+      "url": "https://dashboard.stripe.com",
+      "icon": "CreditCard",
+      "description": "Payments & billing",
+      "accentColor": "#635bff"
+    }
+  ]
+}

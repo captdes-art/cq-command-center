@@ -1,0 +1,94 @@
+{
+  "categories": [
+    {
+      "name": "Catering",
+      "icon": "UtensilsCrossed",
+      "businesses": [
+        {
+          "name": "Port Jefferson Catering Co.",
+          "phone": "(631) 555-0101",
+          "website": "https://example.com",
+          "description": "Full-service catering for party boat events and corporate charters"
+        },
+        {
+          "name": "Harbor Deli & Catering",
+          "phone": "(631) 555-0102",
+          "website": "",
+          "description": "Sandwich platters, boxed lunches for fishing trips"
+        }
+      ]
+    },
+    {
+      "name": "Hotels & Lodging",
+      "icon": "Hotel",
+      "businesses": [
+        {
+          "name": "Danfords Hotel & Marina",
+          "phone": "(631) 928-5200",
+          "website": "https://www.danfords.com",
+          "description": "Waterfront hotel right in Port Jefferson village"
+        },
+        {
+          "name": "Holiday Inn Express - Stony Brook",
+          "phone": "(631) 471-8000",
+          "website": "https://www.ihg.com",
+          "description": "Nearby hotel, 10 min from the harbor"
+        }
+      ]
+    },
+    {
+      "name": "Other Boats & Marinas",
+      "icon": "Ship",
+      "businesses": [
+        {
+          "name": "Port Jefferson Marina",
+          "phone": "(631) 331-3400",
+          "website": "",
+          "description": "Full-service marina with transient slips"
+        },
+        {
+          "name": "Setauket Harbor Task Force",
+          "phone": "(631) 555-0201",
+          "website": "",
+          "description": "Local harbor management and referrals"
+        }
+      ]
+    },
+    {
+      "name": "Bait & Tackle Shops",
+      "icon": "Anchor",
+      "businesses": [
+        {
+          "name": "Port Jeff Bait & Tackle",
+          "phone": "(631) 555-0301",
+          "website": "",
+          "description": "Live bait, frozen bait, and tackle supplies"
+        },
+        {
+          "name": "Tight Lines Tackle",
+          "phone": "(631) 555-0302",
+          "website": "",
+          "description": "Full tackle shop, custom rigs and local advice"
+        }
+      ]
+    },
+    {
+      "name": "Transportation",
+      "icon": "Car",
+      "businesses": [
+        {
+          "name": "LI Limo Service",
+          "phone": "(631) 555-0401",
+          "website": "",
+          "description": "Limo and car service for group charters"
+        },
+        {
+          "name": "Suffolk Transit",
+          "phone": "(631) 852-5200",
+          "website": "https://www.suffolkcountyny.gov/transit",
+          "description": "Public bus service, S62 to Port Jefferson"
+        }
+      ]
+    }
+  ]
+}
