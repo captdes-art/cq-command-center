@@ -1,11 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Anchor } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Anchor, LogOut } from "lucide-react";
 
 export default function Header() {
+  const router = useRouter();
   const [time, setTime] = useState<string>("");
   const [date, setDate] = useState<string>("");
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+    router.refresh();
+  }
 
   useEffect(() => {
     function updateClock() {
@@ -56,10 +64,19 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Right: Clock */}
-        <div className="text-right hidden sm:block">
-          <p className="text-lg font-semibold tabular-nums">{time}</p>
-          <p className="text-sm text-white/70">{date}</p>
+        {/* Right: Clock + Logout */}
+        <div className="flex items-center gap-4">
+          <div className="text-right hidden sm:block">
+            <p className="text-lg font-semibold tabular-nums">{time}</p>
+            <p className="text-sm text-white/70">{date}</p>
+          </div>
+          <button
+            onClick={handleLogout}
+            title="Sign out"
+            className="w-9 h-9 bg-white/15 hover:bg-white/25 backdrop-blur-sm rounded-lg flex items-center justify-center transition-colors cursor-pointer"
+          >
+            <LogOut className="w-4 h-4 text-white" />
+          </button>
         </div>
       </div>
     </header>
