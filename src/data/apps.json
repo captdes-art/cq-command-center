@@ -2,14 +2,14 @@
   "apps": [
     {
       "name": "Reservation System",
-      "url": "https://celticquestfishing.com/reservations",
+      "url": "https://cqreservationsystem.vercel.app/admin",
       "icon": "CalendarCheck",
       "description": "Manage bookings & schedule",
       "accentColor": "#0d9488"
     },
     {
       "name": "Invoice App",
-      "url": "https://invoices.celticquest.com",
+      "url": "https://nimble-invoice-buddy.vercel.app/",
       "icon": "FileText",
       "description": "Create & send invoices",
       "accentColor": "#06b6d4"
@@ -37,7 +37,7 @@
     },
     {
       "name": "CQ Social Buddy",
-      "url": "https://social.celticquest.com",
+      "url": "https://cq-social-buddy.vercel.app/",
       "icon": "Bot",
       "description": "AI social media assistant",
       "accentColor": "#8b5cf6"
@@ -65,7 +65,7 @@
     },
     {
       "name": "Stripe Dashboard",
-      "url": "https://dashboard.stripe.com",
+      "url": "https://dashboard.stripe.com/acct_1JSjOODeFyp30Jt0/dashboard",
       "icon": "CreditCard",
       "description": "Payments & billing",
       "accentColor": "#635bff"
