@@ -1,24 +1,18 @@
 import {
   TrendingUp,
-  ShieldCheck,
   Ship,
   Thermometer,
 } from "lucide-react";
 
 const links = [
   {
-    name: "Tide Charts",
-    url: "https://tidesandcurrents.noaa.gov/noaatidepredictions.html?id=8516945",
+    name: "Tide Charts — Bridgeport",
+    url: "https://tidesandcurrents.noaa.gov/noaatidepredictions.html?id=8467150",
     icon: TrendingUp,
   },
   {
-    name: "USCG Boating Safety",
-    url: "https://www.uscgboating.org",
-    icon: ShieldCheck,
-  },
-  {
     name: "PJ Ferry Schedule",
-    url: "https://www.88844ferry.com/schedules",
+    url: "https://www.88844ferry.com/schedule",
     icon: Ship,
   },
   {
