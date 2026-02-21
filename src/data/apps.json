@@ -30,7 +30,7 @@
     },
     {
       "name": "RingCentral",
-      "url": "https://app.ringcentral.com",
+      "url": "https://login.ringcentral.com/sw.html?responseType=code&clientId=DE0Af3c63a68092734D333990A0401D349EEd9bdc46e80ec158238C3D857A92A&brandId=1210&state=WAP-25e77b43-f907-4a6e-ba64-a1d0158bf8ca&localeId=en_US&endpointId=&session=658009169876483049&display=page&prompt=login%20sso&scope=openid%20profile&appUrlScheme=https%3A%2F%2Fservice.ringcentral.com%2Fmobile%2Foauthredirect&ui_options=show_back_to_app%20external_popup%20hide_consent%20hide_select_account&code_challenge=&code_challenge_method=&appName=SW&response_hint=login_type%20login_id%20locale_id%20mailbox_id&force=true&v=26.1.0.1#/enterCredential",
       "icon": "Phone",
       "description": "Calls & messages",
       "accentColor": "#f97316"
