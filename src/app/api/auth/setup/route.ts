@@ -1,13 +1,20 @@
 import { NextRequest, NextResponse } from "next/server";
-import { isSetupComplete, completeSetup, createSession } from "@/lib/auth";
+import { isSetupComplete, completeSetup, createSession, canWriteToFilesystem } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
   try {
-    // Don't allow re-setup if already complete
     if (isSetupComplete()) {
       return NextResponse.json(
         { error: "Setup has already been completed" },
         { status: 403 }
+      );
+    }
+
+    // On Vercel (read-only filesystem), setup is done via environment variables
+    if (!canWriteToFilesystem()) {
+      return NextResponse.json(
+        { error: "On Vercel, set ADMIN_USERNAME, ADMIN_PASSWORD, ADMIN_SECURITY_QUESTION, and ADMIN_SECURITY_ANSWER in your Vercel environment variables instead." },
+        { status: 400 }
       );
     }
 
@@ -27,7 +34,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    completeSetup(username, password, securityQuestion, securityAnswer);
+    const saved = completeSetup(username, password, securityQuestion, securityAnswer);
+    if (!saved) {
+      return NextResponse.json(
+        { error: "Could not save credentials" },
+        { status: 500 }
+      );
+    }
+
     await createSession();
 
     return NextResponse.json({ success: true });

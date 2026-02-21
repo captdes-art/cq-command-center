@@ -3,12 +3,14 @@ import crypto from "crypto";
 import fs from "fs";
 import path from "path";
 
-// Path to the credentials file (persists across restarts)
-const CREDENTIALS_FILE = path.join(process.cwd(), "data", "admin-credentials.json");
+// --- Environment variables (work everywhere including Vercel) ---
+const ENV_USERNAME = process.env.ADMIN_USERNAME || "admin";
+const ENV_PASSWORD = process.env.ADMIN_PASSWORD || "cqadmin2025";
+const ENV_SECURITY_QUESTION = process.env.ADMIN_SECURITY_QUESTION || "";
+const ENV_SECURITY_ANSWER = process.env.ADMIN_SECURITY_ANSWER || "";
 
-// Defaults — used if no credentials file exists yet
-const DEFAULT_USERNAME = process.env.ADMIN_USERNAME || "admin";
-const DEFAULT_PASSWORD = process.env.ADMIN_PASSWORD || "cqadmin2025";
+// --- File-based storage (works locally, not on Vercel) ---
+const CREDENTIALS_FILE = path.join(process.cwd(), "data", "admin-credentials.json");
 
 const SESSION_COOKIE = "cq-session";
 const SESSION_MAX_AGE = 60 * 60 * 24 * 7; // 7 days
@@ -22,8 +24,24 @@ interface AdminCredentials {
   updatedAt: string;
 }
 
-function hash(value: string): string {
+function hashValue(value: string): string {
   return crypto.createHash("sha256").update(value.toLowerCase().trim()).digest("hex");
+}
+
+function canWriteToFilesystem(): boolean {
+  try {
+    const dir = path.dirname(CREDENTIALS_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    // Test write
+    const testFile = path.join(dir, ".write-test");
+    fs.writeFileSync(testFile, "ok");
+    fs.unlinkSync(testFile);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 function loadCredentials(): AdminCredentials | null {
@@ -33,17 +51,22 @@ function loadCredentials(): AdminCredentials | null {
       return JSON.parse(raw) as AdminCredentials;
     }
   } catch {
-    // Fall through to defaults
+    // File doesn't exist or can't be read
   }
   return null;
 }
 
-function saveCredentials(data: AdminCredentials): void {
-  const dir = path.dirname(CREDENTIALS_FILE);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
+function saveCredentials(data: AdminCredentials): boolean {
+  try {
+    const dir = path.dirname(CREDENTIALS_FILE);
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true });
+    }
+    fs.writeFileSync(CREDENTIALS_FILE, JSON.stringify(data, null, 2));
+    return true;
+  } catch {
+    return false;
   }
-  fs.writeFileSync(CREDENTIALS_FILE, JSON.stringify(data, null, 2));
 }
 
 function generateSessionToken(): string {
@@ -79,26 +102,38 @@ export async function isAuthenticated(): Promise<boolean> {
 // --- Credential validation ---
 
 export function validateCredentials(username: string, password: string): boolean {
+  // First check saved file (local dev)
   const saved = loadCredentials();
-
   if (saved) {
-    return username === saved.username && hash(password) === saved.passwordHash;
+    return username === saved.username && hashValue(password) === saved.passwordHash;
   }
 
-  // Fall back to defaults (first-time use before setup)
-  return username === DEFAULT_USERNAME && password === DEFAULT_PASSWORD;
+  // Fall back to environment variables
+  return username === ENV_USERNAME && password === ENV_PASSWORD;
 }
 
 // --- Security question setup ---
 
 export function isSetupComplete(): boolean {
+  // Check file first (local dev)
   const saved = loadCredentials();
-  return saved?.setupComplete === true;
+  if (saved?.setupComplete) return true;
+
+  // On Vercel: if security question env var is set, setup is done
+  if (ENV_SECURITY_QUESTION && ENV_SECURITY_ANSWER) return true;
+
+  return false;
 }
 
 export function getSecurityQuestion(): string | null {
+  // Check file first
   const saved = loadCredentials();
-  return saved?.securityQuestion || null;
+  if (saved?.securityQuestion) return saved.securityQuestion;
+
+  // Fall back to env var
+  if (ENV_SECURITY_QUESTION) return ENV_SECURITY_QUESTION;
+
+  return null;
 }
 
 export function completeSetup(
@@ -106,12 +141,12 @@ export function completeSetup(
   password: string,
   securityQuestion: string,
   securityAnswer: string
-): void {
-  saveCredentials({
+): boolean {
+  return saveCredentials({
     username,
-    passwordHash: hash(password),
+    passwordHash: hashValue(password),
     securityQuestion,
-    securityAnswerHash: hash(securityAnswer),
+    securityAnswerHash: hashValue(securityAnswer),
     setupComplete: true,
     updatedAt: new Date().toISOString(),
   });
@@ -120,16 +155,27 @@ export function completeSetup(
 // --- Password reset via security question ---
 
 export function validateSecurityAnswer(answer: string): boolean {
+  // Check file first
   const saved = loadCredentials();
-  if (!saved?.securityAnswerHash) return false;
-  return hash(answer) === saved.securityAnswerHash;
+  if (saved?.securityAnswerHash) {
+    return hashValue(answer) === saved.securityAnswerHash;
+  }
+
+  // Fall back to env var
+  if (ENV_SECURITY_ANSWER) {
+    return answer.toLowerCase().trim() === ENV_SECURITY_ANSWER.toLowerCase().trim();
+  }
+
+  return false;
 }
 
-export function resetPassword(newPassword: string): void {
+export function resetPassword(newPassword: string): boolean {
   const saved = loadCredentials();
-  if (!saved) return;
+  if (!saved) return false;
 
-  saved.passwordHash = hash(newPassword);
+  saved.passwordHash = hashValue(newPassword);
   saved.updatedAt = new Date().toISOString();
-  saveCredentials(saved);
+  return saveCredentials(saved);
 }
+
+export { canWriteToFilesystem };
